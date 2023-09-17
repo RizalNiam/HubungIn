@@ -84,15 +84,4 @@ class BookController extends Controller
 
         $user->delete;
     }
-
-    public function get_img_slider()
-    {
-        $user = auth("api")->user();
-
-        $rawData = DB::table('sliders')
-        ->select('id', 'photo')
-        ->get(); 
-        
-        return $this->requestSuccessData('Success!', $rawData);
-    }
 }

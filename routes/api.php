@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\SendEmailController;
 
 
@@ -32,8 +34,8 @@ Route::middleware('jwt.verify')->group(function () {
     Route::get('auth/nature_destinations', [BookController::class, 'get_nature_destinations']);
     Route::get('auth/all_destinations', [BookController::class, 'get_all_destinations']);
     Route::get('auth/get_bookmarks', [UserController::class, 'get_bookmarks']);
-    Route::get('auth/img_slider', [BookController::class, 'get_img_slider']);
+    Route::get('auth/img_slider', [SliderController::class, 'get_img_slider']);
     Route::post('auth/addreview', [ReviewController::class, 'addreview']);
-    Route::post('auth/addbookmark', [BookmarkController::class, 'addbookmark']);
+    Route::post('auth/addcart', [CartController::class, 'addcart']);
     Route::get('send-email', [SendEmailController::class, 'index']);
 });
