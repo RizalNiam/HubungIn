@@ -7,40 +7,36 @@ use App\Traits\ApiResponses;
 use Illuminate\Support\Facades\DB;
 use Validator;
 
-class DestinationController extends Controller
+class BookController extends Controller
 {
     use ApiResponses;
 
-    public function add_destination(Request $request) {
+    public function addbook(Request $request) {
         $validator = Validator::make(request()->all(), [
-            'name' => 'string|max:255',
-            'address' => 'string|max:255',
+            'title' => 'string|max:255',
+            'price' => 'string|max:255',
             'description' => 'string|max:2048',
-            'facility' => 'string|max:255',
-            'budget' => 'string|max:255',
             'photo' => 'image|file|max:10240',
             'category' => 'string|max:255',
         ]);
         
         if ($validator->fails()) {
-            return $this->responseValidation($validator->errors(), 'destination failed to add');
+            return $this->responseValidation($validator->errors(), 'book failed to add');
         }
 
         $path = $request->file('photo')->store('public', 'public');
-        $link = "https://magang.crocodic.net/ki/RizalAfifun/KatalogApp/storage/app/public/";
+        $link = "https://magang.crocodic.net/ki/RizalAfifun/EcommerceApp/storage/app/public/";
         $link .= $path;
 
-        DB::table('destinations')->insert([
-            'name' => $request['name'],
-            'address' => $request['address'],
+        DB::table('books')->insert([
+            'title' => $request['title'],
+            'price' => $request['price'],
             'description' => $request['description'],
-            'facility' => $request['facility'],
-            'budget' => $request['budget'],
             'photo' => $link,
             'category' => $request['category'],
         ]);
 
-        return $this->requestSuccess('destination successfully added');
+        return $this->requestSuccess('book successfully added');
     }
 
     function get_children_destinations() {
@@ -93,11 +89,8 @@ class DestinationController extends Controller
     {
         $user = auth("api")->user();
 
-        $limit = $_GET['limit'];
-
-        $rawData = DB::table('destinations')
-        ->select('id', 'name', 'address', 'photo')
-        ->take($limit)
+        $rawData = DB::table('sliders')
+        ->select('id', 'photo')
         ->get(); 
         
         return $this->requestSuccessData('Success!', $rawData);

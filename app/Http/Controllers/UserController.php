@@ -8,12 +8,12 @@ use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
-use SebastianBergmann\Type\NullType;
+use SebastianBergmann\Type\NullType;    
 use Validator;
  
  
 class UserController extends Controller
-{
+{   
     use ApiResponses;
     /**
      * Register a User.
@@ -54,7 +54,8 @@ class UserController extends Controller
         $user = User::create($request->all());
 
 
-        return $this->requestSuccess('Registration Success', '200');
+       return $this->requestSuccess('Registration Success', '200');
+
     }
  
     /**
@@ -231,7 +232,7 @@ class UserController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh());
+        return $this->respondWithToken($this->refresh());
     }
  
     /**
