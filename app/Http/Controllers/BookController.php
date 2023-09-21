@@ -16,7 +16,7 @@ class BookController extends Controller
             'title' => 'string|max:255',
             'price' => 'string|max:255',
             'description' => 'string|max:2048',
-            'photo' => 'image|file|max:10240',
+            'photo' => 'image|file',
             'category' => 'string|max:255',
         ]);
         
