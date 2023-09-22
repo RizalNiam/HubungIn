@@ -24,9 +24,13 @@ class BookController extends Controller
             return $this->responseValidation($validator->errors(), 'book failed to add');
         }
 
-        $path = $request->file('photo')->store('public', 'public');
-        $link = "https://magang.crocodic.net/ki/RizalAfifun/EcommerceApp/storage/app/public/";
-        $link .= $path;
+        $link = null;
+
+        if ($request->file('photo') != null) {
+            $path = $request->file('photo')->store('public', 'public');
+            $link = "https://magang.crocodic.net/ki/RizalAfifun/EcommerceApp/storage/app/public/";
+            $link .= $path;
+        }
 
         DB::table('books')->insert([
             'title' => $request['title'],
