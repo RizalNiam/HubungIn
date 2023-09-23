@@ -32,7 +32,7 @@ Route::middleware('jwt.verify')->group(function () {
     Route::post('auth/addbook', [BookController::class, 'addbook']);
     Route::get('auth/children_destinations', [BookController::class, 'get_children_destinations']);
     Route::get('auth/nature_destinations', [BookController::class, 'get_nature_destinations']);
-    Route::get('auth/all_destinations', [BookController::class, 'get_all_destinations']);
+    Route::get('auth/get_books', [BookController::class, 'get_books']);
     Route::get('auth/get_bookmarks', [UserController::class, 'get_bookmarks']);
     Route::get('auth/img_slider', [SliderController::class, 'get_img_slider']);
     Route::post('auth/addreview', [ReviewController::class, 'addreview']);

@@ -43,10 +43,10 @@ class BookController extends Controller
         return $this->requestSuccess('book successfully added');
     }
 
-    function get_children_destinations() {
+    function get_books() {
         $user = auth("api")->user();
 
-        $rawData = DB::table('destinations')
+        $rawData = DB::table('books')
         ->select('id', 'name', 'address', 'description', 'photo', 'category', 'budget', 'created_at', 'updated_at')
         ->where('category', '=', 'children')
         ->get(); 
@@ -68,10 +68,12 @@ class BookController extends Controller
     function get_all_destinations() {
         $destination = auth("api")->user();
 
-        $rawData = DB::table('destinations')
-        ->select('id', 'name', 'address', 'description', 'photo', 'category', 'budget', 'created_at', 'updated_at')
+        $user = auth("api")->user();
+
+        $rawData = DB::table('books')
+        ->select('*')
         ->inRandomOrder()
-        ->get();
+        ->get(); 
         
         return $this->requestSuccessData('Success!', $rawData);
     }
