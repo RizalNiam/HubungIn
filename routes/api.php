@@ -37,5 +37,6 @@ Route::middleware('jwt.verify')->group(function () {
     Route::get('auth/img_slider', [SliderController::class, 'get_img_slider']);
     Route::post('auth/addreview', [ReviewController::class, 'addreview']);
     Route::post('auth/addcart', [CartController::class, 'addcart']);
+    Route::post('auth/addfavorite', [CartController::class, 'addfavorite']);
     Route::get('send-email', [SendEmailController::class, 'index']);
 });
