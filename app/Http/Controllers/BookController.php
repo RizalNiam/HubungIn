@@ -43,7 +43,7 @@ class BookController extends Controller
         return $this->requestSuccess('book successfully added');
     }
 
-    function get_books() {
+    function test() {
         $user = auth("api")->user();
 
         $rawData = DB::table('books')
@@ -65,8 +65,7 @@ class BookController extends Controller
         return $this->requestSuccessData('Success!', $rawData);
     }
 
-    function get_all_destinations() {
-        $destination = auth("api")->user();
+    function get_books() {
 
         $user = auth("api")->user();
 
