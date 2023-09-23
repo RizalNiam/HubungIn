@@ -11,7 +11,7 @@ class FavoriteController extends Controller
 {
     use ApiResponses;
 
-    public function add_favortie(Request $request) {
+    public function add_favorite(Request $request) {
         $validator = Validator::make(request()->all(), [
             'book_id' => 'required|numeric|max:255',
         ]);
