@@ -29,7 +29,7 @@ Route::middleware('jwt.verify')->group(function () {
     Route::post('auth/logout', [UserController::class, 'logout']);
     Route::get('auth/getprofile', [UserController::class, 'getprofile']);
     Route::post('auth/editprofile', [UserController::class, 'editprofile']);
-    Route::get('auth/renew_token', [UserController::class, 'refresh']);
+    Route::get('auth/refresh', [UserController::class, 'refresh']);
     Route::post('auth/addbook', [BookController::class, 'addbook']);
     Route::get('auth/children_destinations', [BookController::class, 'get_children_destinations']);
     Route::get('auth/nature_destinations', [BookController::class, 'get_nature_destinations']);
