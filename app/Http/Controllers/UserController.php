@@ -232,7 +232,7 @@ class UserController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken($this->refresh());
+        return $this->respondWithToken(auth('api')->refresh());
     }
  
     /**
