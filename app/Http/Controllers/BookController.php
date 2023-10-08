@@ -54,10 +54,10 @@ class BookController extends Controller
         return $this->requestSuccessData('Success!', $rawData);
     }
 
-    function get_nature_destinations() {
+    function get_nature_books() {
         $user = auth("api")->user();
 
-        $rawData = DB::table('destinations')
+        $rawData = DB::table('books')
         ->select('id', 'name', 'address', 'description', 'photo', 'category', 'budget', 'created_at', 'updated_at')
         ->where('category', '=', 'nature')
         ->get(); 
@@ -76,6 +76,19 @@ class BookController extends Controller
         
         return $this->requestSuccessData('Success!', $rawData);
     }
+
+    function get_favorites() {
+        $user = auth("api")->user();
+
+        $rawData = DB::table('books')
+        ->join('favorites', 'books.id', '=', 'favorites.book_id')
+        ->join('users', 'favorites.user_id', '=', 'users.id')
+        ->select('users.username as user', 'books.name as title','books.description', 'books.photo', 'books.price', 'books.category', 'books.created_at', 'books.updated_at')
+        ->where('favorites.user_id', '=', $user->id)
+        ->get();        
+        
+        return $this->requestSuccessData('Success!', $rawData);
+}
 
     public function delete_image()
     {

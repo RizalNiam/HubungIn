@@ -29,4 +29,16 @@ class CartController extends Controller
 
         return $this->requestSuccess('book successfully added');
     }
+
+    function get_carts() {
+        $user = auth("api")->user();
+
+        $rawData = DB::table('books')
+        ->join('carts', 'books.id', '=', 'carts.book_id')
+        ->select('books.title as title','books.description', 'books.photo', 'books.price', 'books.category', 'books.created_at', 'books.updated_at')
+        ->where('carts.user_id', '=', $user->id)
+        ->get();      
+        
+        return $this->requestSuccessData('Success!', $rawData);
+    }
 }

@@ -39,6 +39,8 @@ Route::middleware('jwt.verify')->group(function () {
     Route::post('auth/add_sliders', [SliderController::class, 'add_sliders']);
     Route::post('auth/addreview', [ReviewController::class, 'addreview']);
     Route::post('auth/addcart', [CartController::class, 'addcart']);
+    Route::get('auth/getcarts', [CartController::class, 'get_carts']);
     Route::post('auth/addfavorite', [FavoriteController::class, 'add_favorite']);
+    Route::get('auth/getFavorites', [FavoriteController::class, 'get_favorites']);
     Route::get('send-email', [SendEmailController::class, 'index']);
 });
