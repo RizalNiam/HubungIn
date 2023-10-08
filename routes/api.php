@@ -40,7 +40,7 @@ Route::middleware('jwt.verify')->group(function () {
     Route::post('auth/addreview', [ReviewController::class, 'addreview']);
     Route::post('auth/addcart', [CartController::class, 'addcart']);
     Route::get('auth/getcarts', [CartController::class, 'get_carts']);
-    Route::post('auth/addfavorite', [FavoriteController::class, 'add_favorite']);
-    Route::get('auth/getFavorites', [FavoriteController::class, 'get_favorites']);
+    Route::post('auth/add_favorite', [FavoriteController::class, 'add_favorite']);
+    Route::get('auth/get_favorites', [FavoriteController::class, 'get_favorites']);
     Route::get('send-email', [SendEmailController::class, 'index']);
 });
