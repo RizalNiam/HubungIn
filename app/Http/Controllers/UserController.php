@@ -23,6 +23,7 @@ class UserController extends Controller
     public function register(Request $request) {
         $validator = Validator::make(request()->all(), [
             'username' => 'required|string|max:255',
+            'fullname' => 'required|string|max:255',
             'email' => 'nullable|string|max:255',
             'phone' => 'required|string|max:255',
             'password' => 'required|string|min:8|max:255',
@@ -38,6 +39,13 @@ class UserController extends Controller
         if ($user) {
             // Jika nomor telepon sudah terdaftar, kirim response dengan pesan error
             return $this->badRequest('Sorry the phone number is already used. Please use a different one');
+        }
+
+        $user = User::where('username', $request->username)->first();
+
+        if ($user) {
+            // Jika nomor telepon sudah terdaftar, kirim response dengan pesan error
+            return $this->badRequest('Sorry the username number is already used. Please use a different one');
         }
 
         if ($request["email"] != NULL){
@@ -56,29 +64,6 @@ class UserController extends Controller
 
        return $this->requestSuccess('Registration Success', '200');
 
-    }
- 
-    /**
-     * Get a JWT via given credentials.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function login()
-    {
-        $input = request(['phone', 'password']);
- 
-        if (! $token = auth('api')->attempt($input)) {
-            return response()->json(['error' => 'User fot found, Failed to login'], 401);
-        }
-
-        $user = auth('api')->user();
-    
-        $data = DB::table('users')
-            ->select('id', 'username', 'phone', 'email', 'created_at', 'updated_at')
-            ->where('users.id', '=', $user->id)
-            ->get();
- 
-        return $this->loginSuccess($data[0], $token);
     }
 
     public function getprofile()
