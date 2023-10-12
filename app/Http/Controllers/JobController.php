@@ -34,13 +34,12 @@ class JobController extends Controller
             $link .= $path;
         }
 
-        DB::table('books')->insert([
+        DB::table('jobs')->insert([
             'title' => $request['title'],
             'salary' => $request['salary'],
             'description' => $request['description'],
             'requirement' => $request['requirement'],
             'photo' => $link,
-            'category_id' => $request['category'],
             'creator_id' => $request['creator_id'],
         ]);
 
