@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\BookController;
+use App\Http\Controllers\CVController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\AuthController;
@@ -40,6 +40,8 @@ Route::middleware('jwt.verify')->group(function () {
     Route::get('auth/delete_job', [JobController::class, 'delete_job']);
     Route::get('auth/find_job', [JobController::class, 'find_job']);    
     Route::get('auth/get_condition_job', [JobController::class, 'get_condition_job']);
+
+    Route::post('auth/add_cv', [CVController::class, 'add_cv']);
 
     Route::get('auth/img_slider', [SliderController::class, 'get_img_slider']);
     Route::post('auth/add_sliders', [SliderController::class, 'add_sliders']);
