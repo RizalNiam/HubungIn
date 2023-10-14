@@ -9,26 +9,13 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\SaveJobController;
 use App\Http\Controllers\SendEmailController;
-
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
 Route::post('/auth/login', [AuthController::class, 'login']);
 Route::post('/auth/register', [UserController::class, 'register']);
 
 Route::middleware('jwt.verify')->group(function () {
-
-
     Route::post('auth/logout', [UserController::class, 'logout']);
     Route::get('auth/getprofile', [UserController::class, 'getprofile']);
     Route::post('auth/editprofile', [UserController::class, 'editprofile']);
@@ -39,7 +26,13 @@ Route::middleware('jwt.verify')->group(function () {
     Route::get('auth/update_job', [JobController::class, 'update_job']);
     Route::get('auth/delete_job', [JobController::class, 'delete_job']);
     Route::get('auth/find_job', [JobController::class, 'find_job']);    
-    Route::get('auth/get_condition_job', [JobController::class, 'get_condition_job']);
+    Route::get('auth/filter_location_jobs', [JobController::class, 'filter_location_jobs']);
+    Route::get('auth/get_education_jobs_desc', [JobController::class, 'get_education_jobs_desc']);
+    Route::get('auth/get_education_jobs_asc', [JobController::class, 'get_education_jobs_asc']);
+
+    Route::get('auth/save_job', [SaveJobController::class, 'save_job']);
+    Route::get('auth/unsave_job', [SaveJobController::class, 'unsave_job']);
+    Route::get('auth/get_saved_jobs', [SaveJobController::class, 'get_saved_jobs']);
 
     Route::post('auth/add_cv', [CVController::class, 'add_cv']);
 

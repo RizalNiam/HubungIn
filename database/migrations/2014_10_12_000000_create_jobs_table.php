@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->integer('title');
             $table->string('description');
-            $table->string('requirement');
+            $table->string('education');
             $table->string('salary')->nullable();
             $table->string('photo');
+            $table->string('province');
             $table->bigInteger('category_id', );
             $table->timestamps();
         });

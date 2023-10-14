@@ -15,9 +15,10 @@ class JobController extends Controller
         $validator = Validator::make(request()->all(), [
             'title' => 'require|string|max:255',
             'description' => 'require|string|max:2048',
-            'requirement' => 'require|string|max:2048',
+            'education' => 'require|string|max:2048',
             'salary' => 'string|max:255',
             'photo' => 'require|image|file',
+            'province' => 'require|string|max:2048',
             'category_id' => 'require|string|max:255',
             'creator_id' => 'require|integer'
         ]);
@@ -38,8 +39,9 @@ class JobController extends Controller
             'title' => $request['title'],
             'salary' => $request['salary'],
             'description' => $request['description'],
-            'requirement' => $request['requirement'],
+            'education' => $request['education'],
             'photo' => $link,
+            'province' => $request['province'],
             'creator_id' => $request['creator_id'],
         ]);
 
@@ -58,13 +60,37 @@ class JobController extends Controller
         return $this->requestSuccessData('Success!', $rawData);
     }
 
-    function get_condition_jobs(Request $request) {
+    function get_education_jobs_desc() {
 
         $user = auth("api")->user();
 
         $rawData = DB::table('jobs')
         ->select('*')
-        ->where('category_id', $request['category_id'])
+        ->orderBy('education','DESC')
+        ->get(); 
+        
+        return $this->requestSuccessData('Success!', $rawData);
+    }
+
+    function get_education_jobs_asc() {
+
+        $user = auth("api")->user();
+
+        $rawData = DB::table('jobs')
+        ->select('*')
+        ->orderBy('education','ASC')
+        ->get(); 
+        
+        return $this->requestSuccessData('Success!', $rawData);
+    }
+
+    function filter_location_jobs(Request $request) {
+
+        $user = auth("api")->user();
+
+        $rawData = DB::table('jobs')
+        ->select('*')
+        ->where('province', $request['province'])
         ->get(); 
         
         return $this->requestSuccessData('Success!', $rawData);
@@ -79,6 +105,7 @@ class JobController extends Controller
         $notes = DB::table('jobs')
             ->where('title', 'like', '%' . $keyword . '%')
             ->orWhere('description', 'like', '%' . $keyword . '%')
+            ->orWhere('province', 'like', '%' . $keyword . '%')
             ->get();
 
 	return $this->requestSuccessData('Success!', $notes);	

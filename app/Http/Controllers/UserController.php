@@ -82,19 +82,6 @@ class UserController extends Controller
         return $this->requestSuccessData('Success!', $rawData);
     }
 
-    function get_bookmarks() {
-            $user = auth("api")->user();
-    
-            $rawData = DB::table('destinations')
-            ->join('bookmarks', 'destinations.id', '=', 'bookmarks.destination_id')
-            ->join('users', 'bookmarks.user_id', '=', 'users.id')
-            ->select('users.username as user', 'destinations.name as destination','destinations.address', 'destinations.photo', 'destinations.category', 'destinations.budget', 'destinations.created_at', 'destinations.updated_at')
-            ->where('bookmarks.user_id', '=', $user->id)
-            ->get();        
-            
-            return $this->requestSuccessData('Success!', $rawData);
-    }
-
     public function editprofile(Request $request)
     {
         if (! $user = auth("api")->user()) {
