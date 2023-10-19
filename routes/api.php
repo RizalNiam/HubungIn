@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CVController;
 use App\Http\Controllers\SliderController;
-use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\RatingController       ;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\FavoriteController;
@@ -39,7 +39,8 @@ Route::middleware('jwt.verify')->group(function () {
     Route::get('auth/img_slider', [SliderController::class, 'get_img_slider']);
     Route::post('auth/add_sliders', [SliderController::class, 'add_sliders']);
 
-    Route::post('auth/addreview', [ReviewController::class, 'addreview']);
+    Route::post('auth/add_rating', [RatingController::class, 'add_rating']);
+    Route::get('auth/get_rating', [RatingController::class, 'get_rating']);
 
     Route::post('auth/addcart', [CartController::class, 'addcart']);
     Route::get('auth/getcarts', [CartController::class, 'get_carts']);

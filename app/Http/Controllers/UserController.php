@@ -26,6 +26,7 @@ class UserController extends Controller
             'fullname' => 'required|string|max:255',
             'email' => 'nullable|string|max:255',
             'phone' => 'required|string|max:255',
+            'role_id' => 'required|integer|max:255',
             'password' => 'required|string|min:8|max:255',
             'confirm_password' => 'required|string|same:password|min:8|max:255',
         ]);
