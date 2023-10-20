@@ -10,7 +10,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\SaveJobController;
-use App\Http\Controllers\SendEmailController;
+use App\Http\Controllers\NotifController;
 
 Route::post('/auth/login', [AuthController::class, 'login']);
 Route::post('/auth/register', [UserController::class, 'register']);
@@ -47,6 +47,8 @@ Route::middleware('jwt.verify')->group(function () {
 
     Route::post('auth/add_favorite', [FavoriteController::class, 'add_favorite']);
     Route::get('auth/get_favorites', [FavoriteController::class, 'get_favorites']);
+
+    Route::post('auth/send_notif', [NotifController::class, 'send_notif']);
 
     Route::get('send-email', [SendEmailController::class, 'index']);
 });

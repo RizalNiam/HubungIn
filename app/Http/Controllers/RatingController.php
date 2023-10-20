@@ -47,6 +47,7 @@ class RatingController extends Controller
 
         $rata2 = $total / $many_review;    
         
-        return number_format($rata2, 1, ',', '.');    
+        return number_format($rata2, 1, ',', '.'); 
+            
     }
 }

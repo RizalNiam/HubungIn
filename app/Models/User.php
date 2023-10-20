@@ -32,6 +32,7 @@ class User extends Authenticatable implements JWTSubject
         'profi;e_photo_path',
         'email',
         'password',
+        'device_token',
     ];
 
     /**

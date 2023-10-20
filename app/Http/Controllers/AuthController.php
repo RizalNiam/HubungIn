@@ -24,12 +24,17 @@ class AuthController extends Controller
     public function login()
     {
         $input = request(['phone', 'password']);
+        $device_token = request('device_token');
  
         if (! $token = auth('api')->attempt($input)) {
             return response()->json(['error' => 'User fot found, Failed to login'], 401);
         }
 
         $user = auth('api')->user();
+
+        DB::table('users')
+              ->where('id', $user->id)
+              ->update(['device_token' => $device_token]);
     
         $data = DB::table('users')
             ->select('id', 'username', 'phone', 'email', 'created_at', 'updated_at')
