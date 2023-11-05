@@ -11,7 +11,7 @@ use Validator;
 class ConsultantController extends Controller
 {
     use ApiResponses;
-    
+
     public function add_consultant(Request $request) {
         $validator = Validator::make(request()->all(), [
             'fullname' => 'required|string|max:255',
@@ -32,11 +32,11 @@ class ConsultantController extends Controller
             return $this->badRequest('Sorry the phone number is already used. Please use a different one');
         }
 
-        $consultant = Consultant::where('username', $request->username)->first();
+        $consultant = Consultant::where('fullname', $request->fullname)->first();
 
         if ($consultant) {
             // Jika nomor telepon sudah terdaftar, kirim response dengan pesan error
-            return $this->badRequest('Sorry the username number is already used. Please use a different one');
+            return $this->badRequest('Sorry the fullname is already used. Please use a different one');
         }
 
         if ($request["email"] != NULL){
