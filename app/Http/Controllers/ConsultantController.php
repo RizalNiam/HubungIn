@@ -67,6 +67,6 @@ class ConsultantController extends Controller
             ->get();
 
 
-        return $this->requestSuccessData('Get Consultant Success', $data);
+        return $this->requestSuccessData('Get Consultants Success', $data);
     }
 }
