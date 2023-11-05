@@ -11,7 +11,7 @@ class SaveJobController extends Controller
 {
     use ApiResponses;
 
-    public function set_job(Request $request) {
+    public function save_job(Request $request) {
         $user = auth("api")->user();
 
         DB::table('saves')->insert([
