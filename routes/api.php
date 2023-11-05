@@ -7,6 +7,7 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\RatingController       ;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ConsultantController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\SaveJobController;
@@ -49,6 +50,8 @@ Route::middleware('jwt.verify')->group(function () {
     Route::get('auth/get_favorites', [FavoriteController::class, 'get_favorites']);
 
     Route::post('auth/send_notif', [NotifController::class, 'send_notif']);
+
+    Route::post('auth/get_consultans', [ConsultantController::class, 'get_consultans']);
 
     Route::get('send-email', [SendEmailController::class, 'index']);
 });
