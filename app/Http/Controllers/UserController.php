@@ -161,7 +161,7 @@ class UserController extends Controller
 
         $input = [
             'id' => $user->id, 
-            'New_password' => request('Old_password')
+            'password' => request('Old_password')
         ];
 
         if (!auth("api")->attempt($input)) {
