@@ -28,8 +28,8 @@ class JobController extends Controller
         }
 
         $link = null;
-        $salary = "IDR";
-        $salary .= $request['salary'];
+        $salary = "IDR ";
+        $salary .= number_format($request['salary'], 2, ",", ".");
 
         if ($request->file('photo') != null) {
             $path = $request->file('photo')->store('public', 'public');
