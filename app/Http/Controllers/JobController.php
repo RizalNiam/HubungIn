@@ -15,6 +15,7 @@ class JobController extends Controller
         $validator = Validator::make(request()->all(), [
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:2048',
+            'pt' => 'required|string|max:2048',
             'education' => 'required|string|max:2048',
             'salary' => 'string|max:255',
             'photo' => 'required|image|file',
@@ -38,6 +39,7 @@ class JobController extends Controller
 
         DB::table('jobs')->insert([
             'title' => $request['title'],
+            'pt' => $request['pt'],
             'salary' => $salary,
             'description' => $request['description'],
             'education' => $request['education'],
