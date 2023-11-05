@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email')->nullable()->unique();
             $table->bigInteger('phone', )->unique();
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->string('password');
             $table->timestamps();
         });
     }
