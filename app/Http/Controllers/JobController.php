@@ -57,7 +57,7 @@ class JobController extends Controller
 
         $rawData = DB::table('jobs')
         ->join('saves', 'jobs.id', '=', 'saves.job_id')
-        ->select('saves.job_id as favorited', 'jobs.title as title', 'jobs.pt as pt','jobs.description as description', 'jobs.photo as photo', 'jobs.education as education', 'jobs.salary as salary', 'jobs.province as province', 'jobs.category_id as category_id', 'jobs.created_at as created_at', 'jobs.updated_at as updated_at')
+        // ->select('saves.job_id as favorited', 'jobs.title as title', 'jobs.pt as pt','jobs.description as description', 'jobs.photo as photo', 'jobs.education as education', 'jobs.salary as salary', 'jobs.province as province', 'jobs.category_id as category_id', 'jobs.created_at as created_at', 'jobs.updated_at as updated_at')
         ->where('saves.user_id', '=', $user->id)
         ->get(); 
 
