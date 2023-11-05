@@ -51,7 +51,8 @@ Route::middleware('jwt.verify')->group(function () {
 
     Route::post('auth/send_notif', [NotifController::class, 'send_notif']);
 
-    Route::post('auth/get_consultans', [ConsultantController::class, 'get_consultans']);
+    Route::post('auth/add_consultant', [ConsultantController::class, 'add_consultant']);
+    Route::get('auth/get_consultans', [ConsultantController::class, 'get_consultans']);
 
     Route::get('send-email', [SendEmailController::class, 'index']);
 });
