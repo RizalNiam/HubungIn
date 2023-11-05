@@ -18,7 +18,7 @@ class JobController extends Controller
             'education' => 'required|string|max:2048',
             'salary' => 'string|max:255',
             'photo' => 'required|image|file',
-            'province_id' => 'required|string|max:2048',
+            'province' => 'required|string|max:2048',
             'category_id' => 'required|string|max:255',
         ]);
         
@@ -42,7 +42,7 @@ class JobController extends Controller
             'description' => $request['description'],
             'education' => $request['education'],
             'photo' => $link,
-            'province_id' => $request['province_id'],
+            'province' => $request['province'],
         ]);
 
         return $this->requestSuccess('job successfully added');
