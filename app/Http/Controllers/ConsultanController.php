@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ConsultantController extends Controller
 {
-    public function register(Request $request) {
+    public function add_consultant(Request $request) {
         $validator = Validator::make(request()->all(), [
             'fullname' => 'required|string|max:255',
             'email' => 'nullable|string|max:255',
