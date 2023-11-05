@@ -97,7 +97,7 @@ class JobController extends Controller
 
     public function find_jobs()
 	{
-	$keyword = $_POST['keyword'];
+	$keyword = $_GET['keyword'];
 
 	$user = auth("api")->user();
     
