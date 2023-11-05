@@ -21,6 +21,7 @@ Route::middleware('jwt.verify')->group(function () {
     Route::get('auth/getprofile', [UserController::class, 'getprofile']);
     Route::post('auth/editprofile', [UserController::class, 'editprofile']);
     Route::get('auth/refresh', [UserController::class, 'refresh']);
+    Route::get('auth/updatepassword', [UserController::class, 'editpassword']);
 
     Route::post('auth/add_job', [JobController::class, 'add_job']);
     Route::get('auth/get_jobs', [JobController::class, 'get_jobs']);
