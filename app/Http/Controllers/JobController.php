@@ -42,6 +42,7 @@ class JobController extends Controller
             'pt' => $request['pt'],
             'salary' => $salary,
             'description' => $request['description'],
+            'category_id' => $request['category_id'],
             'education' => $request['education'],
             'photo' => $link,
             'province' => $request['province'],
