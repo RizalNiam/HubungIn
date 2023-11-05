@@ -71,7 +71,7 @@ class JobController extends Controller
         ->inRandomOrder()
         ->get(); 
 
-        var_dump($saved);
+        echo $saved->user_id;
         
         return $this->requestSuccessData('Success!', $rawData);
     }
