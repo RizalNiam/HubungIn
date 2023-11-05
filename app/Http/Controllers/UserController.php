@@ -153,8 +153,8 @@ class UserController extends Controller
 
         $validator = Validator::make(request()->all(), [
             'Old_password' => 'required|string|min:8|max:255',
-            'New_password' => 'required|string|same:password|min:8|max:255',
-            'Confirm_password' => 'required|string|same:password|min:8|max:255',
+            'New_password' => 'required|string|min:8|max:255',
+            'Confirm_password' => 'required|string|same:New_password|min:8|max:255',
         ]);
 
 	    $user = auth('api')->user();
