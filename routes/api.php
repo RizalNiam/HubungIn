@@ -32,7 +32,7 @@ Route::middleware('jwt.verify')->group(function () {
     Route::get('auth/get_education_jobs_desc', [JobController::class, 'get_education_jobs_desc']);
     Route::get('auth/get_education_jobs_asc', [JobController::class, 'get_education_jobs_asc']);
 
-    Route::get('auth/save_job', [SaveJobController::class, 'save_job']);
+    Route::post('auth/save_job', [SaveJobController::class, 'save_job']);
     Route::get('auth/unsave_job', [SaveJobController::class, 'unsave_job']);
     Route::get('auth/get_saved_jobs', [SaveJobController::class, 'get_saved_jobs']);
 
