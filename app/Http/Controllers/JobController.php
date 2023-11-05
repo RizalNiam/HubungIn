@@ -13,13 +13,13 @@ class JobController extends Controller
 
     public function add_job(Request $request) {
         $validator = Validator::make(request()->all(), [
-            'title' => 'require|string|max:255',
-            'description' => 'require|string|max:2048',
-            'education' => 'require|string|max:2048',
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:2048',
+            'education' => 'required|string|max:2048',
             'salary' => 'string|max:255',
-            'photo' => 'require|image|file',
-            'province_id' => 'require|string|max:2048',
-            'category_id' => 'require|string|max:255',
+            'photo' => 'required|image|file',
+            'province_id' => 'required|string|max:2048',
+            'category_id' => 'required|string|max:255',
         ]);
         
         if ($validator->fails()) {
