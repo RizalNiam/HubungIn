@@ -173,10 +173,10 @@ class UserController extends Controller
             return $this->responseValidation($validator->errors(), 'Password not changed, new password is not valid. (min. 8 character)');
         }
 
-        if($request['New_password'] != $request['Old_password']){
+        if($request['New_password'] != $request['Confirm_password']){
             return $this->responseValidation($validator->errors(), 'Password not changed, confirm password not match)');
         }
-        
+
         $request['New_password'] = bcrypt($request['New_password']);        
 
         DB::table('users')
