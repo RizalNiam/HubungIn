@@ -173,8 +173,6 @@ class UserController extends Controller
             return $this->responseValidation($validator->errors(), 'Password not changed, new password is not valid. (min. 8 character)');
         }
 
-        echo $request['New_password'];
-        
         if($request['New_password'] != $request['Confirm_password']){
             return $this->responseValidation($validator->errors(), 'Password not changed, confirm password not match)');
         }

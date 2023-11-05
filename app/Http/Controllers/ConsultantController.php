@@ -63,7 +63,7 @@ class ConsultantController extends Controller
         $consultant = auth("api")->user();
 
         $data = DB::table('consultants')
-            ->select('id', 'fullname', 'profile_photo_path', 'phone', 'email', 'created_at', 'updated_at')
+            ->select('id', 'fullname', 'profile_photo_path', 'phone', 'link_chat', 'email', 'created_at', 'updated_at')
             ->get();
 
 
