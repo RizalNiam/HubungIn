@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Consultant;
 use Illuminate\Http\Request;
+use App\Traits\ApiResponses;
 use Validator;
 
 class ConsultantController extends Controller
 {
+    use ApiResponses;
+    
     public function add_consultant(Request $request) {
         $validator = Validator::make(request()->all(), [
             'fullname' => 'required|string|max:255',
