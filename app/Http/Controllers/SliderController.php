@@ -35,7 +35,7 @@ class SliderController extends Controller
 
         if ($request->file('photo') != null) {
             $path = $request->file('photo')->store('public', 'public');
-            $link = "https://magang.crocodic.net/ki/RizalAfifun/EcommerceApp/storage/app/public/";
+            $link = "https://magang.crocodic.net/ki/RizalAfifun/HubungIn/storage/app/public/";
             $link .= $path;
         }
 

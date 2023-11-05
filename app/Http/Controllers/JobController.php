@@ -18,9 +18,8 @@ class JobController extends Controller
             'education' => 'require|string|max:2048',
             'salary' => 'string|max:255',
             'photo' => 'require|image|file',
-            'province' => 'require|string|max:2048',
+            'province_id' => 'require|string|max:2048',
             'category_id' => 'require|string|max:255',
-            'creator_id' => 'require|integer'
         ]);
         
         if ($validator->fails()) {
@@ -41,8 +40,7 @@ class JobController extends Controller
             'description' => $request['description'],
             'education' => $request['education'],
             'photo' => $link,
-            'province' => $request['province'],
-            'creator_id' => $request['creator_id'],
+            'province_id' => $request['province_id'],
         ]);
 
         return $this->requestSuccess('job successfully added');
@@ -84,13 +82,14 @@ class JobController extends Controller
         return $this->requestSuccessData('Success!', $rawData);
     }
 
-    function filter_location_jobs(Request $request) {
+    function filter(Request $request) {
 
         $user = auth("api")->user();
 
         $rawData = DB::table('jobs')
         ->select('*')
-        ->where('province', $request['province'])
+        ->where('province_id', $request['province_id'])
+        ->where('cotegory_id', $request['cotegory_id'])
         ->get(); 
         
         return $this->requestSuccessData('Success!', $rawData);

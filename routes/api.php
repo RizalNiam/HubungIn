@@ -25,8 +25,8 @@ Route::middleware('jwt.verify')->group(function () {
     Route::get('auth/get_jobs', [JobController::class, 'get_jobs']);
     Route::get('auth/update_job', [JobController::class, 'update_job']);
     Route::get('auth/delete_job', [JobController::class, 'delete_job']);
-    Route::get('auth/find_job', [JobController::class, 'find_job']);    
-    Route::get('auth/filter_location_jobs', [JobController::class, 'filter_location_jobs']);
+    Route::get('auth/find_job', [JobController::class, 'find_jobs']);    
+    Route::get('auth/filter', [JobController::class, 'filter']);
     Route::get('auth/get_education_jobs_desc', [JobController::class, 'get_education_jobs_desc']);
     Route::get('auth/get_education_jobs_asc', [JobController::class, 'get_education_jobs_asc']);
 
