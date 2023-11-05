@@ -27,6 +27,8 @@ class JobController extends Controller
         }
 
         $link = null;
+        $salary = "IDR";
+        $salary .= $request['salary'];
 
         if ($request->file('photo') != null) {
             $path = $request->file('photo')->store('public', 'public');
@@ -36,7 +38,7 @@ class JobController extends Controller
 
         DB::table('jobs')->insert([
             'title' => $request['title'],
-            'salary' => $request['salary'],
+            'salary' => $salary,
             'description' => $request['description'],
             'education' => $request['education'],
             'photo' => $link,
