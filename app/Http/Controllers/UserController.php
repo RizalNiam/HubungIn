@@ -101,10 +101,10 @@ class UserController extends Controller
             return $this->responseValidation($validator->errors(), 'Sorry data failed to edit, Please try again');
         }
 
-        // hapus foto sebelumnya terlebih dulu, jika ada
-        $this->delete_image();
-
         if($request['photo'] != null){
+            // hapus foto sebelumnya terlebih dulu, jika ada
+            $this->delete_image();
+    
             $path = $request->file('photo')->store('public', 'public');
             $link = "https://magang.crocodic.net/ki/RizalAfifun/HubungIn/storage/app/public/";
             $link .= $path;
@@ -119,8 +119,7 @@ class UserController extends Controller
             DB::table('users')
             ->where('id', $user->id)
             ->update([
-                'username' => $request['username'],
-                'profile_photo_path' => null
+                'username' => $request['username']
             ]);
         } 
 
@@ -157,11 +156,9 @@ class UserController extends Controller
             'Confirm_password' => 'required|string|same:New_password|min:8|max:255',
         ]);
 
-	    $user = auth('api')->user();
-
         $input = [
             'id' => $user->id, 
-            'password' => request('Old_password')
+            ' password' => request('Old_password')
         ];
 
         if (!auth("api")->attempt($input)) {
