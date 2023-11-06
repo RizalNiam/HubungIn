@@ -61,17 +61,15 @@ class JobController extends Controller
         // ->where('saves.user_id', '=', $user->id)
         // ->get(); 
 
-        $saved = DB::table('saves')
-        ->select('*')
-        ->inRandomOrder()
-        ->get(); 
+        // $saved = DB::table('saves')
+        // ->select('*')
+        // ->inRandomOrder()
+        // ->get(); 
 
         $rawData = DB::table('jobs')
         ->select('*')
         ->inRandomOrder()
         ->get(); 
-
-        echo $saved['id'];
         
         return $this->requestSuccessData('Success!', $rawData);
     }
