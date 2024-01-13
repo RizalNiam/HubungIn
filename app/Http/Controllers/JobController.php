@@ -111,7 +111,7 @@ class JobController extends Controller
         ->where('province', $province)
         ->get(); 
         
-        return $this->requestSuccessData('Success!', $rawData);
+        return $this->requestSuccessData('Success!', $province);
     }
 
     function delete_job(Request $request) {
