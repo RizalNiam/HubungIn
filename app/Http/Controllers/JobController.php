@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Validator;
 
 class JobController extends Controller
-{
+{ 
     use ApiResponses;
 
     public function add_job(Request $request) {
