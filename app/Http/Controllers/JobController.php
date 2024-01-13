@@ -104,8 +104,7 @@ class JobController extends Controller
 
         $rawData = DB::table('jobs')
         ->select('*')
-        ->where('province_id', $request['province_id'])
-        ->where('cotegory_id', $request['cotegory_id'])
+        ->where('province', $request['province'])
         ->get(); 
         
         return $this->requestSuccessData('Success!', $rawData);
