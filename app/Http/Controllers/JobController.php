@@ -111,6 +111,15 @@ class JobController extends Controller
         return $this->requestSuccessData('Success!', $rawData);
     }
 
+    function delete_job(Request $request) {
+
+        $job = auth("api")->user();
+
+        DB::table('jobs')->where('id', $job->id)->delete();
+        
+        return $this->requestSuccess('the job has been deleted!');
+    }
+
     public function find_jobs()
 	{
 	$keyword = $_GET['keyword'];
