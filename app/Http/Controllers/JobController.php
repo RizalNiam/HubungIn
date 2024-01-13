@@ -104,6 +104,8 @@ class JobController extends Controller
 
         $province = $_GET['province'];
 
+        echo $province;
+
         $rawData = DB::table('jobs')
         ->select('*')
         ->where('province', $province)
