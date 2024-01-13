@@ -116,9 +116,10 @@ class JobController extends Controller
 
     function delete_job(Request $request) {
 
-        $job = auth("api")->user();
+        auth("api")->user;
+        $job_id => $request['id']
 
-        DB::table('jobs')->where('id', $job->id)->delete();
+        DB::table('jobs')->where('id', $job_id)->delete();
         
         return $this->requestSuccess('the job has been deleted!');
     }
