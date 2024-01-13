@@ -102,9 +102,11 @@ class JobController extends Controller
 
         $user = auth("api")->user();
 
+        $province = $_GET['province'];
+
         $rawData = DB::table('jobs')
         ->select('*')
-        ->where('province', $request['province'])
+        ->where('province', $province)
         ->get(); 
         
         return $this->requestSuccessData('Success!', $rawData);
